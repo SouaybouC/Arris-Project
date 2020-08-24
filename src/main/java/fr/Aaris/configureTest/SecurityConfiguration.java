@@ -29,7 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/profile/**").authenticated()
                 .antMatchers("/index.html").permitAll()
                 .and()
-                .formLogin();
+                .httpBasic();
     }
     @Bean
     PasswordEncoder passwordEncoder(){
