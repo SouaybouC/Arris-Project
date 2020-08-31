@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fenetre</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+<body>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+
+<div class="chatBox" >
+    <div id="conversation">
+        <p>Salut tu peux discuter ici avec moi !</p>
+        <span  id="user"></span>
+        <span  id="chatbot"></span>
+    </div>
+</div>
+        <div id="user-text">
+            <input  id="input" type="text" placeholder="vasy parle..." autocomplete="off"/>
+
+            <button type="button" id="btn-cancel" class="btn cancel" onclick="parent.closeIframe();">Close</button>
+        </div>
+</div>
+</body>
+</html>
+
+
+
+<style>
+
+    .chatBox{
+        height: 100%;
+        margin: 1%;
+        padding: 10px 10px;
+        min-height: 350px;
+        max-height: 350px;
+        overflow: auto;
+    }
+
+    #input{
+        padding: 6px;
+        border: solid;
+
+    }
+
+    #chatbot{
+        padding: 6px;
+        border: none;
+        border-radius: 30px;
+    }
+    body{
+        background-color: whitesmoke;
+    }
+
+    /*#user-text,#input{
+        position: fixed;
+        bottom: 10px;
+        background-color: #ececec;
+        padding:2%;
+    }*/
+
+</style>
+<style>
+    .choice{
+        cursor: pointer;
+    }
+</style>
+
+
+<script>
+
+
+
+    var trigger = [
+        ["salut","bjr","bonjour","hey"],
+        ["ca va","tout va bien"," tu fais quoi"],
+        ["tu es nul","lol","tu sers a rien"],
+        ["au revoir","bye","a bientot"],
+        ["decoupage","decoupe","meuble"],
+        ["planche","combien","taille"],
+        ["bois","type","matiere"],
+        ["prix","prix par piece"],
+        ["livraison","delais de livraison"],
+        ["endroit","piece","quelle piece"]
+
+    ];
+
+    var reply = [
+        ["Salut ! Dis moi tout","Hey ! vas-y je t'écoute","Bonjour! Si tu es là c'est que tu as besoin de moi hehe"],
+        ["Oui ça va et toi?","Je m'ennuie sans toi","Je suis là pour t'aider!"],
+        ["C'est très méchant ça","Ok si tu veux plus de moi...","Je m'en vais"],
+        ["Salut!","A bientot ! "],
+        ["On peut aussi faire des rénovations","La découpe est unique cela dépend du client"],
+        ["Vous avez entre 2 tailles","On a differente modèle de planche"],
+        ["On utilise énormément le CORIAN","Plusieurs matières sont disponible","Nos produits sont de qualité"],
+        ["Pour le prix vous pourriez faire un devis","Vous pourriez nous appeler pour plus d'information "],
+        ["En général la livraison s'effectue en fonction de nos fournisseurs","L'estimation dépend du produit"],
+        ["On effectue des travaux dans les chambres,les salons,les salles de bains"]
+
+
+
+    ];
+
+    var alternative = ["Haha...", "Eh...","Euuuuuuh ....","Je ne comprends pas","Ok...."];
+    document.querySelector("#input").addEventListener("keypress", function(e){
+        var key = e.which || e.keyCode;
+        if(key === 13){  //touche entrer=13
+            var input = document.getElementById("input").value;
+            output(input);
+        }
+    });
+    function output(input){
+        try{
+            var product = input + "=" + eval(input);
+        } catch(e){
+            var text = (input.toLowerCase()).replace(/[^\w\s\d]/gi, "");
+            text = text
+                .replace("un", " ")
+                .replace("une", " ")
+                .replace("tes","tu es")
+                .replace("t'es","tu es")
+                .replace(" svp "," ")
+                .replace("jsuis","je suis")
+                .replace("chui", "je suis")
+                .replace("stp", " ")
+                .replace("jai","jai")
+                .replace("je veux"," ")
+                .replace("le"," ")
+                .replace("la", " ")
+                .replace("slt","salut")
+                .replace("bjr","bonjour");
+            document.getElementById("chatbot").innerHTML += input+"<br>";
+
+            if(compare(trigger, reply, text)){
+                var product = compare(trigger, reply, text);
+                document.getElementById("chatbot").innerHTML += product+"<br>";
+            } else {
+                var product = alternative[Math.floor(Math.random()*alternative.length)];
+                document.getElementById("chatbot").innerHTML += product+"<br>";
+            }
+        }
+        document.getElementById("input").value = ""; //nettoie le input
+
+
+    }
+    function compare(arr, array, string){
+        var item;
+        for(var x=0; x<arr.length; x++){
+            for(var y=0; y<array.length; y++){
+                if(arr[x][y] == string){
+                    items = array[x];
+                    item =  items[Math.floor(Math.random()*items.length)];
+                }
+            }
+        }
+        return item;
+    }
+
+
+
+
+</script>
+
+
+
+
+
+
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <div th:replace="fragment/header :: header-css"/>
+    <title>Connexion</title>
+</head>
+<body>
+<div th:replace="fragment/header :: header"/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h1>Connexion</h1>
+            <form th:action="@{/login}" method="post">
+
+                <!-- message d'erreur -->
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger">Invalide !</div>
+                </div>
+
+                <!-- Message de deconnexion -->
+                <div th:if="${param.logout}">
+                    <div class="alert alert-info">Vous avez été déconecté !</div>
+                </div>
+
+                <!-- Formulaire d'inscription -->
+                <div class="form-group">
+                    <label for="username">Email: </label>
+                    <input type="email" class="form-control" id="username" name="username"
+                           required="required" placeholder="pedro2365@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password: </label>
+                    <input type="password" class="form-control" id="password" name="password"
+                           required="required">
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <input type="submit" name="Valider" id="login" class="form-control btn btn-primary"
+                                   value="Connexion">
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+            <div class="form-group">
+                <span>Nouveau Client? <a href="/" th:href="@{/registration}">Inscription</a> </span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<div th:replace="fragment/footer :: footer"/>
+</html>
