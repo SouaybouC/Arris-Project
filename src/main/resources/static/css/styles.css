@@ -1,0 +1,59 @@
+.h1 {
+  padding-top: 100px;
+  text-align: center;
+}
+
+.img-fluid.d-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.projet h1 {
+  font-size: 56px;
+  font-weight: bold;
+}
+
+.projet a {
+  font-size: 28px;
+  margin-bottom: 80px;
+}
+
+.partie {
+  height: 400px;
+  /*width: 400px;*/
+  padding-top: 48px;
+  margin: 10px 10px 0px 0px;
+  text-align: center;
+}
+
+.partie, h3 {
+  font-size: 23px;
+  font-weight: 400;
+}
+
+.slogan {
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+  color: black;
+}
+
+titre {
+  font-size: 100px;
+  text-align: center;
+}
+
+.d-block {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+img {
+}
+
+.container, .container-lg, .container-md, .container-sm, .container-xl {
+  margin-top: 100px;
+}
+

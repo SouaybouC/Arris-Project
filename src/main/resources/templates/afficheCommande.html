@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1> Commande </h1>
+<th:block th:if="${produits}"></th:block>
+
+<th:unless>
+    <table class = "table">
+        <thead>
+        <tr>
+            <th>Type</th>
+            <th>Matériaux</th>
+            <th>Dimension</th>
+            <th>Prix</th>
+            <th>Quantite</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="produit : ${produits}">
+            <td th:text="${produit.type}"></td>
+            <td th:text="${produit.nom}"></td>
+            <td th:text="${produit.longueur} + 'x'+${produit.largeur} + 'x'+${produit.epaisseur}"></td>
+            <td th:text="${produit.prix}"></td>
+            <td th:text="${produit.qte}"></td>
+
+            <form th:action="@{/delete/{id}(id=${produit.id_Produit})}" method="get" th:object="${produit}" >
+                <button type="submit" role ="button" class = "btn btn-warning containe" >Supprimer</button>
+            </form>
+        </tr>
+        </tbody>
+    </table>
+</th:unless>
+</div>
+</body>
+</html>
