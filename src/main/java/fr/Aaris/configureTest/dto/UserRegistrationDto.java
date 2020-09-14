@@ -1,4 +1,4 @@
-package fr.Aaris.configureTest.web.dto;
+package fr.Aaris.configureTest.dto;
 
 public class UserRegistrationDto {
     private String firstname;

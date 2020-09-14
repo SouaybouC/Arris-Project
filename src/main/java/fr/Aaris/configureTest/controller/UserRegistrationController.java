@@ -1,7 +1,7 @@
-package fr.Aaris.configureTest.web;
+package fr.Aaris.configureTest.controller;
 
 import fr.Aaris.configureTest.service.UserService;
-import fr.Aaris.configureTest.web.dto.UserRegistrationDto;
+import fr.Aaris.configureTest.dto.UserRegistrationDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;

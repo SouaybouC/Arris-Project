@@ -33,10 +33,11 @@ public class SpringConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests().antMatchers(
                 "/registration**",
-                "/css/**", "/", "/contact**", "/images/**", "/chatbot/**"
+                "/css/**", "/", "/contact**", "/images/**", "/chatbot/**",
+                "/admin/**"
         ).permitAll()
                 .antMatchers("/user/**").authenticated()
-                .antMatchers("/admin/**").hasAnyRole("ROLE_ADMIN")
+              //  .antMatchers("/admin/**").hasAnyRole("ROLE_ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()

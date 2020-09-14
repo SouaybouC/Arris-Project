@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragment/admin-header :: adminheader-css"/>
+    <link rel="stylesheet" th:href="@{/css/users.css}">
+
+</head>
+<body>
+<div th:replace="fragment/admin-header :: header-admin"/>
+
+<div class="content">
+
+    <table>
+        <thead>
+        <tr>
+            <th> Email</th>
+            <th> Prenom</th>
+            <th> Nom de famille</th>
+            <th> </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user: ${users}">
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.firstname}"></td>
+            <td th:text="${user.lastname}"></td>
+            <td> <button> Commandes </button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:fragment="adminheader-css">
+
+        <meta charset="utf-8">
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" th:href="@{/css/adminHeader.css}">
+
+
+    </div>
+</head>
+<body>
+<div th:fragment="header-admin">
+    <div class="sidebar">
+        <a th:href="@{/}"> <i class="fa fa-fw fa-home"></i>Acceuil</a>
+        <a th:href="@{/admin/profile}"> <i class="fa fa-user"></i> Profile</a>
+        <a th:href="@{/admin/users}"> <i class="fa fa-fw fa-user"></i> Users</a>
+        <a href="#">Deconnexion</a>
+    </div>
+</div>
+</body>
+</html>
