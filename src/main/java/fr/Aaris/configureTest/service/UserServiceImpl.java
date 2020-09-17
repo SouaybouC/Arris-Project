@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -44,7 +45,7 @@ public class UserServiceImpl implements UserService {
             throw new UsernameNotFoundException("Adresse mail ou mot de passe Incorect.");
         }
         //user details
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
+        return new GetUserDetails(user);
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {

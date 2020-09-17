@@ -14,10 +14,10 @@
 <body>
 <div th:fragment="header-admin">
     <div class="sidebar">
-        <a th:href="@{/}"> <i class="fa fa-fw fa-home"></i>Acceuil</a>
-        <a th:href="@{/admin/profile}"> <i class="fa fa-user"></i> Profile</a>
-        <a th:href="@{/admin/users}"> <i class="fa fa-fw fa-user"></i> Users</a>
-        <a href="#">Deconnexion</a>
+        <a th:href="@{/}"> <i class="fa fa-fw fa-home" aria-hidden="true"></i>Acceuil</a>
+        <a th:href="@{/admin/profile}"> <i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+        <a th:href="@{/admin/users}"> <i class="fa fa-users" aria-hidden="true"></i> Users</a>
+        <a href="#"> <i class="fa fa-sign-out" aria-hidden="true"></i> Deconnexion</a>
     </div>
 </div>
 </body>
