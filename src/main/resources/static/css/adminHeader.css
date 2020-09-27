@@ -7,7 +7,7 @@ body {
     margin: 0;
     padding: 0;
     width: 200px;
-    background-color: #e95420;
+    background-color: lightgrey;
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -23,14 +23,14 @@ body {
 
 
 .sidebar a:focus {
-    background-color: #ac3911;
-    color: white;
+    background-color: darkgrey;
+    color: black;
 }
 
 
 .sidebar a:hover {
-    background-color: #ac3911;
-    color: white;
+    background-color: darkgrey;
+    color: black;
 }
 
 div.content {
