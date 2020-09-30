@@ -10,36 +10,57 @@
 <body>
 <div th:replace="fragment/header :: header"/>
 
-<div class="carousel-wrapper">
-    <span id="item-1"></span>
-    <span id="item-2"></span>
-    <span id="item-3"></span>
-    <div class="carousel-item item-1">
-        <h2>Item 1</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus accumsan pretium dolor vel convallis.
-            Aliquam erat volutpat. Maecenas lacus nunc, imperdiet sed mi et, finibus suscipit mi.</p>
-        <a class="arrow arrow-prev" href="#item-3"></a>
-        <a class="arrow arrow-next" href="#item-2"></a>
+<div class="container">
+
+
+    <input type="radio" id="i1" name="images" checked/>
+    <input type="radio" id="i2" name="images"/>
+    <input type="radio" id="i3" name="images"/>
+    <input type="radio" id="i4" name="images"/>
+
+    <div class="slide_img" id="one">
+
+        <img th:src="@{/images/renov1}">
+        <label class="prev" for="i4"><span></span></label>
+        <label class="next" for="i2"><span></span></label>
+
     </div>
 
-    <div class="carousel-item item-2">
-        <h2>Item 2</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus accumsan pretium dolor vel convallis.
-            Aliquam erat volutpat.</p>
-        <a class="arrow arrow-prev" href="#item-1"></a>
-        <a class="arrow arrow-next" href="#item-3"></a>
+    <div class="slide_img" id="two">
+
+        <img th:src="@{/images/renov1.jpg}">
+
+        <label class="prev" for="i1"><span></span></label>
+        <label class="next" for="i3"><span></span></label>
+
     </div>
 
-    <div class="carousel-item item-3">
-        <h2>Item 3</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus accumsan pretium dolor vel convallis.
-            Aliquam erat volutpat.</p>
-        <a class="arrow arrow-prev" href="#item-2"></a>
-        <a class="arrow arrow-next" href="#item-1"></a>
+    <div class="slide_img" id="three">
+        <img th:src="@{/images/renov1.jpg}">
+
+        <label class="prev" for="i2"><span></span></label>
+        <label class="next" for="i4"><span></span></label>
     </div>
+
+
+    <div class="slide_img" id="four">
+        <img th:src="@{/images/renov1.jpg}">
+
+        <label class="prev" for="i3"><span></span></label>
+        <label class="next" for="i1"><span></span></label>
+
+    </div>
+
+    <div id="nav_slide">
+        <label for="i1" class="dots" id="dot1"></label>
+        <label for="i2" class="dots" id="dot2"></label>
+        <label for="i3" class="dots" id="dot3"></label>
+        <label for="i4" class="dots" id="dot4"></label>
+    </div>
+
 </div>
 
 </body>
 
-<div th:replace="fragment/footer :: footer"/>
+
 </html>

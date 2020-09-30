@@ -1,5 +1,7 @@
 package fr.Aaris.configureTest.model;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -7,7 +9,7 @@ import java.util.Collection;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     @Column
     private String firstname;
     @Column
@@ -19,11 +21,10 @@ public class User {
     //private boolean active;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Collection<Role> roles;
-   // private String permission;
+    // private String permission;
 
 
-
-    public User(String firstname, String lastname, String email, String password,  Collection<Role> roles) {
+    public User(String firstname, String lastname, String email, String password, Collection<Role> roles) {
 
         this.password = password;
         this.firstname = firstname;
@@ -31,18 +32,18 @@ public class User {
         this.email = email;
         //this.active = active;
         this.roles = roles;
-       // this.permission = permission;
+        // this.permission = permission;
     }
 
     public User() {
 
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

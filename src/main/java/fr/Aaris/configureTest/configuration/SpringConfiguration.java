@@ -50,7 +50,10 @@ public class SpringConfiguration extends WebSecurityConfigurerAdapter {
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout")
-                .permitAll();
+                .permitAll()
+                .and()
+                .rememberMe().key("uniqueAndSecret").tokenValiditySeconds(86400) // 2 semaines
+        ;
     }
 
     @Override

@@ -14,6 +14,7 @@
         <h4 th:text="${user.getFirstname()}"></h4>
         <h5 th:text="${user.getLastname()}"></h5>
         <p>UI Developer</p>
+        <a th:href="@{/user/edit/{id}(id=${user.id})}"><button> Modifier les données  </button></a>
     </div>
     <div class="right">
         <div class="info">
