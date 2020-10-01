@@ -3,6 +3,7 @@ package fr.Aaris.configureTest.model;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 
 @Entity
@@ -16,7 +17,9 @@ public class User {
     private String lastname;
 
     @Column(unique = true)
+    @UniqueElements
     private String email;
+    @Size(min = 8,message = "8 caracteres minnimum")
     private String password;
     //private boolean active;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

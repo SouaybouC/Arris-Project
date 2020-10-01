@@ -32,10 +32,20 @@ public class UserServiceImpl implements UserService {
     // Enregistrement dans la bdd en tant que user
     @Override
     public User save(UserRegistrationDto registrationDto) {
-        User user = new User(registrationDto.getFirstname(),
-                registrationDto.getLastname(), registrationDto.getEmail(),
-                passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Role("ROLE_USER")));
-        return userRepository.save(user);
+        User userin = userRepository.findByEmail(registrationDto.getEmail());
+
+         /*  if (userin != null){
+
+            return;
+        }*/
+
+
+            User user = new User(registrationDto.getFirstname(),
+                    registrationDto.getLastname(), registrationDto.getEmail(),
+                    passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Role("ROLE_USER")));
+            return userRepository.save(user);
+
+
     }
 
     @Override
