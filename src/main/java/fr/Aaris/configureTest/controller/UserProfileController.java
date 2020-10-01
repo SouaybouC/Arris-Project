@@ -47,11 +47,17 @@ public class UserProfileController {
     @PostMapping("/update/{id}")
     public String updateUser(@PathVariable("id") long id, @Valid User user,
                              BindingResult result) {
+
+        String pass = user.getPassword();
         if (result.hasErrors()) {
             user.setId(id);
             return "user/update-profile";
         }
+
+        user.setPassword(pass);
         userRepository.save(user);
+
+
         return "user/profile";
     }
 }

@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700|Muli:300,400" rel="stylesheet">
-        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
         <link rel="stylesheet" th:href="@{/css/footer.css}">
 
     </div>
@@ -14,39 +14,39 @@
 </head>
 <body>
 <div th:fragment="header">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" th:href="@{/}">
+            <img th:src="@{/images/arris.jpg}" alt="Image"/>
+        </a>
 
-                </button>
-                <a class="navbar-brand" th:href="@{/}">
-                    <img th:src="@{/images/logo.png}" alt="Image"/>
-                </a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a th:href="@{/}" class="nav-link text-left">Home</a> <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li><a th:href="@{/decoupe}">Decoupe sur mesure</a></li>
-                    <li><a th:href="@{/meuble}">Meuble sur mesure</a></li>
-                    <li><a th:href="@{/contact.html}">Contact</a></li>
-
-                    <li class="divider"></li>
-
-                </ul>
+        <div class="collapse navbar-collapse" id="navbarColor03">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a th:href="@{/user/profile}" sec:authorize="isAuthenticated()"
-                    > Profile</a></li>
-                    <li><a th:href="@{/logout}" sec:authorize="isAuthenticated()"
-                    >Deconnexion</a></li>
-                    <li><a th:href="@{/login}" sec:authorize="!isAuthenticated()"
-                    >Connexion</a></li>
-                </ul>
-            </div>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/decoupe}">Decoupe sur mesure</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/meuble}">Meuble sur mesure</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/contact.html}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/user/profile}" sec:authorize="isAuthenticated()"
+                    > Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/logout}" sec:authorize="isAuthenticated()"
+                    >Deconnexion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}" sec:authorize="!isAuthenticated()"
+                    >Connexion</a>
+                </li>
+            </ul>
+
         </div>
     </nav>
 </div>

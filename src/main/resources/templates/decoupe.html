@@ -1,0 +1,149 @@
+<!Doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragment/header :: header-css"/>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+
+    <title>Arrisparis Découpe</title>
+</head>
+<body>
+
+<!-- Navbar menu  -->
+<div th:replace="fragment/header :: header"/>
+<br>
+<!-- END nav -->
+
+<!--Choix du Produit -->
+
+<div class="container">
+    <div class="card-group">
+        <div class="card">
+            <img th:src="@{/images/melamine.png}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Mélaminé</h5>
+                <p class="card-text"> Mélaminé melange de ..</p>
+                <div class="form-check form-check-inline">
+
+                    <form th:action="@{/decoupe}" method="post" th:object="${produit}"  >
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" th:field="*{nom}" value="Mélaminé">Mélaminé
+                        </div>
+                        <br>  <br>
+
+                        <h6>Epaisseur : </h6>
+                        <br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" th:field="*{epaisseur}" value="5mm">5mm
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" th:field="*{epaisseur}" value="19mm">19mm
+                        </div>
+                        <br>  <br>
+                        <h6>Dimensions :</h6>
+                        <br>
+                        <div class="form-group mb-2">
+                            <label>Longueur:</label>
+                            <input class="form-control" type="text" th:field="*{longueur}"/><br/>
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <label>Largeur:</label>
+                            <input class="form-control" type="text" th:field="*{largeur}"/><br/>
+                        </div>
+
+                        <button class ="btn btn-warning container" value="Save" type="submit" role="button">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <img th:src="@{/images/medium.jpg}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Medium</h5>
+                <p class="card-text">Medium ..</p>
+
+                <div class="form-check form-check-inline">
+
+                    <form action="#" th:action="@{/decoupe}" th:object="${produit}" method="post">
+
+                        <input class="form-check-input" type="radio" th:field="*{nom}" value="Médium">Médium
+                        <br>  <br>
+
+                        <h6>Epaisseur : </h6>
+                        <br>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" th:field="*{epaisseur}" value="5mm">5mm
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" th:field="*{epaisseur}" value="19mm">19mm
+                        </div>
+                        <br>  <br>
+                        <h6>Dimensions :</h6>
+                        <br>
+                        <div class="form-group mb-2">
+                            <label>Longueur:</label>
+                            <input class="form-control" type="text" th:field="*{longueur}" /><br/>
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <label>Largeur:</label>
+                            <input class="form-control" type="text" th:field="*{largeur}" /><br/>
+                        </div>
+
+                        <button class ="btn btn-warning container" value="Save" type="submit" role="button">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+<h3>Recap produits</h3>
+
+<div class="table">
+    <table border="1">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Prix</th>
+            <th>&nbsp</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="produit : ${produits}">
+            <td th:text="${produit.id}"></td>
+            <td th:text="${produit.type}+' en '+${produit.nom}"></td>
+            <td th:text="${produit.longueur}+'x'+${produit.largeur}"></td>
+            <td th:text="${produit.prix}"></td>
+            <td>
+                <form action="#" th:action="@{/panier}" method="post">
+                    <input type="hidden" th:value="${produit.id}" name="id"/>
+                    <button type="submit">Ajouter au panier</button>
+                </form>
+                <form th:action="@{/delete/{id}(id=${produit.id})}" method="get">
+                    <button type="submit" role ="button" class = "btn btn-warning containe" >Supprimer</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>
