@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <div th:replace="fragment/header :: header-css"/>
+
+    <title>Arrisparis Découpe</title>
+    <style>
+        img.
+    </style>
+</head>
+<body>
+
+<!-- Image principale -->
+<div class="container-fluid">
+    <div class="container">
+        <img th:src="@{/images/image.jpg}" alt="arrisimage">
+    </div>
+</div>
+
+<!-- Navbar menu  -->
+<div th:replace="fragment/header :: header"/>
+<br>
+<!-- END nav -->
+
+
+<img id="myImage" th:src="@{/images/caisson2.png}">
+
+<form action="#" th:action="@{/meuble}" method="post" th:object="${produit}" >
+
+    <input type="radio" th:field="*{nom}" value="Médium">Médium
+    <input type="radio" th:field="*{nom}" value="Mélaminé">Mélaminé
+
+    <input type="radio" th:field="*{epaisseur}" value="5mm">5mm
+    <input type="radio" th:field="*{epaisseur}" value="19mm">19mm
+
+    <label>Longueur:</label>
+    <input class="form-control" type="text" th:field="*{longueur}" /><br/>
+
+    <label>Largeur:</label>
+    <input class="form-control" type="text" th:field="*{largeur}" /><br/>
+
+    <label>Profondeur:</label>
+    <input class="form-control" type="text" th:field="*{profondeur}" /><br/>
+
+    <button class ="btn btn-warning container" value="Save" type="submit" role="button">Save</button>
+
+
+</form>
+</body>
+</html>

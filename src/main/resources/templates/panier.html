@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Cart Page</title>
+    <div th:replace="fragment/header :: header-css"/>
+
+    <title>Arrisparis Découpe</title>
+</head>
+<body>
+
+<!-- Navbar menu  -->
+<div th:replace="fragment/header :: header"/>
+<br>
+<!-- END nav -->
+<div class="container-fluid">
+    <div class="container">
+        <h1>Panier</h1>
+
+        <th:block th:if="${session.panier.isEmpty()}">Aucun panier</th:block>
+        <h4>Total: <span th:text="${session.panier.total}"></span></h4>
+
+        <table border="1">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>name</th>
+                <th>price</th>
+                <th>quantity</th>
+                <th>subtotal</th>
+                <th>remove</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${session.panier.items}">
+                <td th:text="${item.produits.id}"></td>
+                <td th:text="${item.produits.nom}"></td>
+                <td>Rs.<span th:text="${item.produits.prix}"></span></td>
+                <td>
+                    <form action="#" th:action="@{/panier/update}" method="post">
+                        <input type="hidden" th:value="${item.produits.id}" name="id"/>
+                        <input type="number" min="1" th:value="${item.quantity}" name="qty"/>
+                        <button type="submit">update</button>
+                    </form>
+                </td>
+                <td><span th:text="${item.subTotal}"></span></td>
+                <td>
+                    <form action="#" th:action="@{/panier/remove}" method="post">
+                        <input type="hidden" th:value="${item.produits.id}" name="id"/>
+                        <button type="submit">remove</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <form  th:action="@{/panier/validation}" method="post">
+            <button class ="btn btn-warning container" value="Valider la commande" type="submit" role="button">Valider la commande</button>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>
